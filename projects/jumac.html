@@ -31,7 +31,7 @@
 <h2 id="1-랭킹의-동점-기록을-자료구조-선택-문제로-보고-수정">1 랭킹의 동점 기록을 자료구조 선택 문제로 보고 수정</h2>
 <div class="step "><p><strong class="step-k">문제</strong> 오목·무궁화·제기차기 랭킹에서 같은 점수의 기록을 함께 표시해야 했습니다.</p></div>
 <div class="step "><p><strong class="step-k">원인</strong> 점수를 키로 하는 정렬 사전에 기록을 담아, 같은 점수가 두 번 들어오면 <code>Add</code>가 키 중복 예외를 냈습니다.</p></div>
-<div class="step "><p><strong class="step-k">판단</strong> 아래 표는 같은 동점 입력을 두 자료구조가 어떻게 처리하는지 코드 동작으로 정리한 설명용 입력 예입니다.</p></div>
+<div class="step "><p><strong class="step-k">판단</strong> 같은 동점 입력을 두 자료구조가 어떻게 처리하는지 코드 동작으로 비교했습니다(표의 입력은 예시).</p></div>
 <div class="table-wrap" role="region" aria-label="상세 비교와 프로젝트 정보 12" tabindex="0"><table>
 <thead>
 <tr>
@@ -54,8 +54,8 @@
 <div class="step "><p><strong class="step-k">구현</strong> 기록을 목록에 모두 담은 뒤 점수 내림차순으로 정렬하고, 게임 종류를 열거형 하나로 묶어 세 미니게임이 같은 랭킹 패널을 쓰게 했습니다. 관련 코드 <a href="https://github.com/KGAMeta8PreCollaboration/JumacGame/blob/c6c662db6f3e9a0949b2b77d8e4bb05778e448d0/Project/Assets/03.Code/Scripts/UI/LeaderBoard/LeaderBoard.cs#L57-L76">LeaderBoard.cs L57–76</a> · 변경 커밋 <a href="https://github.com/KGAMeta8PreCollaboration/JumacGame/commit/4ab44635723b32e9f4ccffbdaffe2e5aa73918fa">4ab4463</a></p></div>
 <div class="step result"><p><strong class="step-k">결과</strong> 동점 기록을 모두 목록에 담아 표시하며, 등수는 공동 등수가 아닌 연속 순번입니다.</p></div>
 <h2 id="2-인벤토리·장착-변경을-presenter가-ui와-db-저장에-함께-반영">2 인벤토리·장착 변경을 Presenter가 UI와 DB 저장에 함께 반영</h2>
-<figure class="fig  "><a href="/assets/jumac-equipment-uid-blurred.webp" aria-label="장착·해제 UI와 Firebase 저장값(실제 화면, UID 가림): 장착 상태가 화면과 DB 값에 함께 반영됨. 크게 보기"><img src="/assets/jumac-equipment-uid-blurred.webp" width="1440" height="681" loading="lazy" decoding="async" alt="장착·해제 UI와 Firebase 저장값(실제 화면, UID 가림): 장착 상태가 화면과 DB 값에 함께 반영됨."></a><figcaption>장착·해제 UI와 Firebase 저장값(실제 화면, UID 가림): 장착 상태가 화면과 DB 값에 함께 반영됨. · 이미지를 누르면 확대됩니다.</figcaption></figure>
-<figure class="fig diagram "><a href="/assets/jumac-inventory-mvp.webp" aria-label="인벤토리 반영 경로: Presenter가 Model 변경을 UI 갱신·Firebase 저장으로 연결(MVP에 가까운 구분). 크게 보기"><img src="/assets/jumac-inventory-mvp.webp" width="1046" height="880" loading="lazy" decoding="async" alt="인벤토리 반영 경로: Presenter가 Model 변경을 UI 갱신·Firebase 저장으로 연결(MVP에 가까운 구분)."></a><figcaption>인벤토리 반영 경로: Presenter가 Model 변경을 UI 갱신·Firebase 저장으로 연결(MVP에 가까운 구분). · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
+<figure class="fig   "><a href="/assets/jumac-ui-before-after.webp" aria-label="장착·해제 UI와 Firebase 저장값(실제 화면, UID 가림): 장착 상태가 화면과 DB 값에 함께 반영됨. 크게 보기"><img src="/assets/jumac-ui-before-after.webp" width="1042" height="276" loading="lazy" decoding="async" alt="장착·해제 UI와 Firebase 저장값(실제 화면, UID 가림): 장착 상태가 화면과 DB 값에 함께 반영됨."></a><div class="table-wrap" role="region" aria-label="상세 비교와 프로젝트 정보 13" tabindex="0"><table><thead><tr><th>저장값</th><th>변화</th></tr></thead><tbody><tr><td>equippedWeapon</td><td>-1 → 1</td></tr><tr><td>equippedArmor</td><td>-1 → 2</td></tr><tr><td>무기 해제</td><td>1 → -1</td></tr></tbody></table></div><figcaption><b>장착·해제 UI와 Firebase 저장값(실제 화면, UID 가림)</b>: 장착 상태가 화면과 DB 값에 함께 반영됨. · 이미지를 누르면 확대됩니다.</figcaption></figure>
+<figure class="fig diagram  "><a href="/assets/jumac-inventory-mvp.webp" aria-label="인벤토리 반영 경로 재구성도: Presenter가 Model 변경을 UI 갱신·Firebase 저장으로 연결(MVP에 가까운 구분). 크게 보기"><img src="/assets/jumac-inventory-mvp.webp" width="1046" height="880" loading="lazy" decoding="async" alt="인벤토리 반영 경로 재구성도: Presenter가 Model 변경을 UI 갱신·Firebase 저장으로 연결(MVP에 가까운 구분)."></a><figcaption><b>인벤토리 반영 경로 재구성도</b>: Presenter가 Model 변경을 UI 갱신·Firebase 저장으로 연결(MVP에 가까운 구분). · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
 <p>인벤토리 UI, 장비 슬롯, 스탯 창, 저장값이 따로 갱신되면 장착 상태가 화면과 저장값에서 어긋날 수 있습니다. 실제 장애 기록이 아니라 설계 단계의 예방 목적입니다.
 Model 이벤트(추가·제거·장착·해제)를 Presenter가 받아 UI 갱신과 DB 저장을 함께 처리하고, 재접속 시 저장값으로 Model을 복원합니다.
 Presenter가 전역 매니저를 직접 참조해 MVP에 가까운 역할 분리이고, DB 저장 실패 시 롤백·재시도 처리는 확인되지 않습니다.
