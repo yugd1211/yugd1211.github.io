@@ -32,11 +32,11 @@
 <figure class="fig diagram  tall"><a href="/assets/ds-stage-evolution.webp" aria-label="스테이지 구조 변경 3단계: 동시 실행이 아니라 커밋 순서대로 바뀐 설계. 크게 보기"><img src="/assets/ds-stage-evolution.webp" width="626" height="1554" loading="lazy" decoding="async" alt="스테이지 구조 변경 3단계: 동시 실행이 아니라 커밋 순서대로 바뀐 설계."></a><figcaption><b>스테이지 구조 변경 3단계</b>: 동시 실행이 아니라 커밋 순서대로 바뀐 설계. · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
 <div class="step "><p><strong class="step-k">문제</strong> 포털마다 다음 방이 여러 갈래로 갈라져, 분기가 깊어질수록 미리 만들 스테이지 수가 기하급수적으로 늘 수 있었습니다.</p></div>
 <div class="step "><p><strong class="step-k">원인</strong> 처음 구조는 모든 분기의 방을 미리 만들어 연결했습니다. 씬 전환 없이 한 씬 안에서 플레이어·카메라를 다음 구역으로 옮기는 방식이었습니다.</p></div>
-<div class="step "><p><strong class="step-k">판단</strong> 공개 커밋 순서로 남은 실제 변경 기록입니다.</p></div>
+<div class="step "><p><strong class="step-k">판단</strong> 생성 범위를 다음 후보 방으로 줄인 뒤, 지나온 방까지 지우는 순서로 두 번 바꿨습니다.</p></div>
 <div class="table-wrap" role="region" aria-label="상세 비교와 프로젝트 정보 10" tabindex="0"><table>
 <thead>
 <tr>
-<th>단계</th>
+<th>공개 커밋에서 확인한 변경 순서</th>
 <th>방식</th>
 <th>드러난 한계</th>
 </tr>
@@ -59,7 +59,7 @@
 </tbody></table></div>
 <div class="step "><p><strong class="step-k">구현</strong> 노드에 이전·다음 연결을 두고, 선택한 방으로 현재 노드를 옮긴 뒤 이전 방과 형제 방을 지우고 새 다음 후보를 만듭니다. 관련 코드 <a href="https://github.com/yugd1211/DarkShield/blob/2a779961ebef1861cef914dd2e66e244576283a4/DarkShield/Assets/02.Scripts/Stage/StageManager.cs#L93-L127">StageManager.cs L93–127</a> · 변경 커밋 <a href="https://github.com/yugd1211/DarkShield/commit/db280963bd151550fedb0bc6c5a10d6364fab3c2">db28096</a> · <a href="https://github.com/yugd1211/DarkShield/commit/d475539ef3c7997efbe16179c0524be33c2e2ffd">d475539</a></p></div>
 <div class="step result"><p><strong class="step-k">결과</strong> 다음 후보 방만 만들고, 이동 뒤 이전 방과 미선택 분기의 GameObject를 정리했습니다.</p></div>
-<p>측정: 없음(메모리 사용량 비교)</p>
+<p>측정: 기록 미확인(메모리 사용량 비교)</p>
 <h2 id="2-포털·상점·강화·회복의-입력을-하나의-상호작용-규약으로">2 포털·상점·강화·회복의 입력을 하나의 상호작용 규약으로</h2>
 <p>주변 탐지 → 공통 인터페이스의 가능 여부 확인 → 실행 순서로 묶고, 월드 좌표를 UI 인디케이터로 바꿔 표시했습니다.
 상인과의 대화는 문장 큐가 비면 상점을 여는 후속 동작을 호출합니다. 첫 충돌체를 쓰므로 가장 가까운 대상을 고르지는 않습니다.

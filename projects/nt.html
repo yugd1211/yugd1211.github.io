@@ -34,7 +34,7 @@
 <div class="step "><p><strong class="step-k">제약</strong> 노트 생성기는 팀이 <code>AudioSettings.dspTime</code>(오디오 엔진 시계) 기준으로 만든 구조로, 시간순 정렬한 노트를 현재 DSP 시각과 비교해 생성합니다.</p></div>
 <div class="step "><p><strong class="step-k">구현</strong> 에디터 프로젝트를 로드해 노트 데이터로 바꾸고 곡·난이도로 게임을 시작하게 했습니다. 로비에서는 앨범 정보를 로드해 화면을 설정하고, 고른 앨범의 데이터를 불러와 시작합니다.</p></div>
 <div class="step result"><p><strong class="step-k">결과</strong> 에디터에서 만든 곡을 로비에서 골라 플레이하는 경로를 연결했습니다. 로드·게임 설정 커밋(5a91cc0)에 &quot;에디터에서는 되고 VR 빌드에서는 안 되던 버그&quot; 수정도 있습니다(원인 미기재).</p></div>
-<p>측정: 없음(음악·노트 오차). 생성 루프는 팀 코드의 <code>Task.Delay(1)</code> 폴링이라 시간 정밀도를 보장하지 않음</p>
+<p>측정: 기록 미확인(음악·노트 오차의 측정 조건·방법). 생성 루프는 팀 코드의 <code>Task.Delay(1)</code> 폴링이라 시간 정밀도를 보장하지 않음</p>
 <div class="table-wrap" role="region" aria-label="상세 비교와 프로젝트 정보 15" tabindex="0"><table>
 <thead>
 <tr>

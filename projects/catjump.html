@@ -63,7 +63,7 @@
 <figure class="fig diagram  "><a href="/assets/cj-event-lifecycle.webp" aria-label="공통 이벤트 생명주기 재구성도: 신규 미니게임을 진입부터 기간 종료까지 같은 흐름에 연결. 크게 보기"><img src="/assets/cj-event-lifecycle.webp" width="1144" height="996" loading="lazy" decoding="async" alt="공통 이벤트 생명주기 재구성도: 신규 미니게임을 진입부터 기간 종료까지 같은 흐름에 연결."></a><figcaption><b>공통 이벤트 생명주기 재구성도</b>: 신규 미니게임을 진입부터 기간 종료까지 같은 흐름에 연결. · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
 <figure class="fig diagram  tall"><a href="/assets/cj-save-restore.webp" aria-label="이벤트 저장·복귀 재구성도: 진행·보상 저장 뒤 재진입하고 기간 종료는 따로 분기. 크게 보기"><img src="/assets/cj-save-restore.webp" width="768" height="1200" loading="lazy" decoding="async" alt="이벤트 저장·복귀 재구성도: 진행·보상 저장 뒤 재진입하고 기간 종료는 따로 분기."></a><figcaption><b>이벤트 저장·복귀 재구성도</b>: 진행·보상 저장 뒤 재진입하고 기간 종료는 따로 분기. · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
 <blockquote>
-<p><strong>비공개 코드 정책.</strong> CatJump의 소스 코드·내부 문서·데이터는 싣지 않았습니다. 구조도는 담당 기능의 흐름을 일반 명사로 다시 그린 재구성도입니다. 게임 화면은 회사 프로젝트를 에디터에서 실행해 찍은 것으로, 다른 참가자 닉네임은 가렸습니다. 시험·측정 기록이 없는 결과는 사례 끝에 &quot;측정&quot; 한 줄로 표시했습니다.</p>
+<p><strong>비공개 코드 정책.</strong> CatJump의 소스 코드·내부 문서·데이터는 싣지 않았습니다. 구조도는 담당 기능의 흐름을 일반 명사로 다시 그린 재구성도입니다. 게임 화면은 출시 기능을 에디터에서 실행해 촬영했으며, 공개 허용 범위 안에서 PDF·웹에 싣고 화면 속 닉네임은 가렸습니다. 시험·측정 기록을 찾지 못한 결과는 사례 끝에 &quot;측정: 기록 미확인&quot; 한 줄로 표시했습니다.</p>
 </blockquote>
 </section><section class="case" id="case-3"><p><strong>사례 1</strong> · 본인 전 범위 구현</p>
 <h2 id="10인-pvp의-호스트-변경-복구와-순번-카운트다운">10인 PvP의 호스트 변경 복구와 순번 카운트다운</h2>
@@ -91,11 +91,11 @@
 </tbody></table></div>
 <div class="step "><p><strong class="step-k">구현</strong> 경기를 매칭 탐색 → 인원 확정 → 준비·카운트다운 → 플레이 → 결과로 나누고, 새 마스터는 룸 속성의 단계를 읽어 재개합니다. 카운트다운 이벤트에는 순번을 붙여 지난 순번을 반영하지 않고, 이탈한 자리는 AI로 대체합니다.</p></div>
 <div class="step result"><p><strong class="step-k">결과</strong> 출시 후 카운트다운 불일치, 룸 진입 크래시, 로비 복귀 오류를 수정했습니다.</p></div>
-<p>측정: 없음(지연·이탈 조합별 시험 기록, 네트워크 품질 측정치)</p>
+<p>측정: 기록 미확인(지연·이탈 조합별 시험, 네트워크 품질 측정)</p>
 <figure class="fig diagram  "><a href="/assets/cj-pvp-recovery.webp" aria-label="호스트 전환 복구 재구성도: 새 호스트가 룸 상태를 읽어 진행과 참가자 화면을 맞춤(AI 대체는 그림에서 제외). 크게 보기"><img src="/assets/cj-pvp-recovery.webp" width="1440" height="1110" loading="lazy" decoding="async" alt="호스트 전환 복구 재구성도: 새 호스트가 룸 상태를 읽어 진행과 참가자 화면을 맞춤(AI 대체는 그림에서 제외)."></a><figcaption><b>호스트 전환 복구 재구성도</b>: 새 호스트가 룸 상태를 읽어 진행과 참가자 화면을 맞춤(AI 대체는 그림에서 제외). · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
 </section><section class="case" id="case-4"><p><strong>사례 2</strong> · 본인 설계·구현</p>
 <h2 id="이벤트마다-하드코딩하던-대사를-공용-시스템으로">이벤트마다 하드코딩하던 대사를 공용 시스템으로</h2>
-<figure class="fig  strip "><a href="/assets/cj-dialogue-4up-strip.webp" aria-label="공용 대사 시스템이 다른 이벤트에서 재사용된 화면(에디터 실행): 1인 대사 → 2인 슬롯 → 화자 전환 시 포커스 이동 → 복귀. 크게 보기"><img src="/assets/cj-dialogue-4up-strip.webp" width="1440" height="313" loading="lazy" decoding="async" alt="공용 대사 시스템이 다른 이벤트에서 재사용된 화면(에디터 실행): 1인 대사 → 2인 슬롯 → 화자 전환 시 포커스 이동 → 복귀."></a><figcaption><b>공용 대사 시스템이 다른 이벤트에서 재사용된 화면(에디터 실행)</b>: 1인 대사 → 2인 슬롯 → 화자 전환 시 포커스 이동 → 복귀. · 이미지를 누르면 확대됩니다.</figcaption></figure>
+<figure class="fig  strip "><a href="/assets/cj-dialogue-4up-strip.webp" aria-label="본인이 설계·구현한 공용 대사 시스템이 다른 개발자의 이벤트에서 재사용된 화면(에디터 실행): 1인 대사 → 2인 슬롯 → 화자 전환 → 복귀. 크게 보기"><img src="/assets/cj-dialogue-4up-strip.webp" width="1440" height="313" loading="lazy" decoding="async" alt="본인이 설계·구현한 공용 대사 시스템이 다른 개발자의 이벤트에서 재사용된 화면(에디터 실행): 1인 대사 → 2인 슬롯 → 화자 전환 → 복귀."></a><figcaption><b>본인이 설계·구현한 공용 대사 시스템이 다른 개발자의 이벤트에서 재사용된 화면(에디터 실행)</b>: 1인 대사 → 2인 슬롯 → 화자 전환 → 복귀. · 이미지를 누르면 확대됩니다.</figcaption></figure>
 <div class="step "><p><strong class="step-k">문제</strong> 공용 시스템 이전에는 이벤트마다 대사와 연출을 코드에 직접 써서, 새 이벤트마다 대사 UI 연결과 종료·예외 처리를 다시 작성했습니다.</p></div>
 <div class="step "><p><strong class="step-k">제약</strong> 로컬라이징, 타이핑 중 리치 텍스트 태그, 뒤로가기 닫기를 함께 다뤄야 했고, 이미 하드코딩된 기존 이벤트와도 공존해야 했습니다.</p></div>
 <div class="step "><p><strong class="step-k">판단</strong> 대사·연출을 이벤트 코드 밖으로 빼고 공용 시스템이 처리하게 했습니다.</p></div>
@@ -124,8 +124,8 @@
 </tr>
 </tbody></table></div>
 <div class="step "><p><strong class="step-k">구현</strong> 공용 시스템이 태그를 깨지 않는 타이핑, 슬롯 포커스, 배경만 있는 줄, 뒤로가기 닫기를 처리하고, 이벤트 쪽은 완료 콜백으로 후속 동작을 연결합니다.</p></div>
-<div class="step result"><p><strong class="step-k">결과</strong> 새 이벤트의 대사를 공용 시스템에 올리는 구조로 바꿨습니다.</p></div>
-<p>측정: 없음(제작 시간·QA 비용의 전후 비교)</p>
+<div class="step result"><p><strong class="step-k">결과</strong> 이후 여러 이벤트에서 이 공용 대사 시스템을 재사용했습니다.</p></div>
+<p>측정: 기록 미확인(제작 시간·QA 비용 비교)</p>
 <figure class="fig diagram  "><a href="/assets/cj-dialogue-before-after.webp" aria-label="공용 대사 시스템 전후 재구성도: 이벤트별 직접 구현 → 데이터·공용 시스템·연출 훅. 크게 보기"><img src="/assets/cj-dialogue-before-after.webp" width="1440" height="617" loading="lazy" decoding="async" alt="공용 대사 시스템 전후 재구성도: 이벤트별 직접 구현 → 데이터·공용 시스템·연출 훅."></a><figcaption><b>공용 대사 시스템 전후 재구성도</b>: 이벤트별 직접 구현 → 데이터·공용 시스템·연출 훅. · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
 </section><section class="case" id="case-5"><p><strong>사례 3</strong> · 담당 구현</p>
 <h2 id="보상-지급·저장과-표시를-나누고-추첨-전에-후보-제외">보상 지급·저장과 표시를 나누고 추첨 전에 후보 제외</h2>
@@ -153,9 +153,9 @@
 </tr>
 </tbody></table></div>
 <div class="step "><p><strong class="step-k">구현</strong> 미션 결과 → 포인트 반영 → 단계 판정 → 유효 후보 구성 → 등급·스킨 추첨 → 중복은 재화로 전환 → 지급·저장 확정 → 팝업·개봉 연출에 결과 전달.</p></div>
-<div class="step result"><p><strong class="step-k">결과</strong> 지급·저장을 마친 결과만 표시 계층으로 넘기고, 후보 제외와 중복 재화 전환을 넣었습니다.</p></div>
-<p>측정: 미확인(유효 후보가 모두 빠질 때의 반환 정책, 저장 실패 재시도, 표시 확률 검증)</p>
-<figure class="fig  strip "><a href="/assets/cj-skinbox-4up-strip.webp" aria-label="스킨박스 실제 게임 화면(본인 작업 기능, 에디터 실행): 포인트 단계 → 개봉 → 보상 표시 → 다음 단계 진행. 크게 보기"><img src="/assets/cj-skinbox-4up-strip.webp" width="1440" height="440" loading="lazy" decoding="async" alt="스킨박스 실제 게임 화면(본인 작업 기능, 에디터 실행): 포인트 단계 → 개봉 → 보상 표시 → 다음 단계 진행."></a><figcaption><b>스킨박스 실제 게임 화면(본인 작업 기능, 에디터 실행)</b>: 포인트 단계 → 개봉 → 보상 표시 → 다음 단계 진행. · 이미지를 누르면 확대됩니다.</figcaption></figure>
+<div class="step result"><p><strong class="step-k">결과</strong> 유저 데이터의 &quot;없으면 생성&quot; 분기를 걷어내, 상태 생성과 저장 책임을 한곳에 모았습니다.</p></div>
+<p>측정: 기록 미확인(유효 후보가 모두 빠질 때의 반환 정책, 저장 실패 재시도, 표시 확률)</p>
+<figure class="fig  strip "><a href="/assets/cj-skinbox-4up-strip.webp" aria-label="스킨박스 개봉 화면(본인 작업, 에디터 실행): 포인트 단계 → 개봉 → 보상 표시 → 다음 단계. 이 사례의 보상 상자와 같은 기능인지는 확인되지 않은 맥락 자료. 크게 보기"><img src="/assets/cj-skinbox-4up-strip.webp" width="1440" height="440" loading="lazy" decoding="async" alt="스킨박스 개봉 화면(본인 작업, 에디터 실행): 포인트 단계 → 개봉 → 보상 표시 → 다음 단계. 이 사례의 보상 상자와 같은 기능인지는 확인되지 않은 맥락 자료."></a><figcaption><b>스킨박스 개봉 화면(본인 작업, 에디터 실행)</b>: 포인트 단계 → 개봉 → 보상 표시 → 다음 단계. 이 사례의 보상 상자와 같은 기능인지는 확인되지 않은 맥락 자료. · 이미지를 누르면 확대됩니다.</figcaption></figure>
 </section><section class="case" id="case-6"><p><strong>사례 4</strong> · 담당 구현</p>
 <h2 id="회전-ui의-핀-판정을-월드-obb로-통일">회전 UI의 핀 판정을 월드 OBB로 통일</h2>
 <figure class="fig diagram  "><a href="/assets/cj-obb-hit.webp" aria-label="OBB 판정 절차 재구성도: 목표물과 핀을 월드 위치·방향 기준의 같은 좌표계에서 판정. 크게 보기"><img src="/assets/cj-obb-hit.webp" width="866" height="840" loading="lazy" decoding="async" alt="OBB 판정 절차 재구성도: 목표물과 핀을 월드 위치·방향 기준의 같은 좌표계에서 판정."></a><figcaption><b>OBB 판정 절차 재구성도</b>: 목표물과 핀을 월드 위치·방향 기준의 같은 좌표계에서 판정. · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
@@ -188,7 +188,7 @@
 </tbody></table></div>
 <div class="step "><p><strong class="step-k">구현</strong> 목표물과 핀의 월드 위치·방향을 공통 좌표계에서 비교하도록 판정 기준을 바꿨습니다. 주변 구조는 운영 데이터 파싱·검증, 런타임 모델, 라운드 상태 전환, 판정기로 나눴고, 목표물·등급·회전은 세션 시드와 단계·라운드 값으로 고릅니다.</p></div>
 <div class="step result"><p><strong class="step-k">결과</strong> 월드 OBB 판정으로 기준을 바꾸고, 이어하기 광고·스킵·네트워크 예외를 수정했습니다.</p></div>
-<p>측정: 없음(판정 오차의 전후 측정)</p>
+<p>측정: 기록 미확인(판정 오차 비교)</p>
 <h3 id="함께-맡은-일-상승형-미니게임의-진행-규칙과-unity-표현-분리">함께 맡은 일: 상승형 미니게임의 진행 규칙과 Unity 표현 분리</h3>
 <p>높이 구간마다 배경·보상·대화가 바뀌고, 광고 이어하기·부스터·일시정지가 끼어드는 미니게임입니다.
 시작·완료·지급·결과 적용은 Unity 의존이 적은 흐름 객체에 두고, 입력·시간·스크롤·연출은 연결 계층으로 나눴습니다.
@@ -199,7 +199,7 @@
 <div class="step "><p><strong class="step-k">문제</strong> 메인 화면 광고 보상(티켓)이 저장되지 않는 경로가 있었고, 이어하기 광고에서도 스킵·네트워크 실패·일시정지 후 종료 예외가 반복됐습니다. 광고 SDK 콜백은 앱의 백그라운드 전환과 엮여 있습니다.</p></div>
 <div class="step "><p><strong class="step-k">구현</strong> 광고 결과 콜백 → 보상 지급 → 저장 → UI·알림 갱신 순서로 경로를 맞추고, 이어하기 광고의 스킵·실패 예외를 처리했습니다.</p></div>
 <div class="step result"><p><strong class="step-k">결과</strong> 광고 보상 경로에서 누락된 저장 처리를 수정했습니다.</p></div>
-<p>측정: 없음(수정 후 재발 추적)</p>
+<p>측정: 기록 미확인(수정 후 재발 추적)</p>
 <h3 id="라이브-운영에서-맡은-그-밖의-일">라이브 운영에서 맡은 그 밖의 일</h3>
 <figure class="fig  strip "><a href="/assets/cj-event-4up-strip.webp" aria-label="왁뿌볼 이벤트(본인 주도 작업, 1.1.334 출시) 실제 게임 화면(에디터 실행): 공지 → 이벤트 로비 → 플레이 → 결과·보상. 크게 보기"><img src="/assets/cj-event-4up-strip.webp" width="1440" height="555" loading="lazy" decoding="async" alt="왁뿌볼 이벤트(본인 주도 작업, 1.1.334 출시) 실제 게임 화면(에디터 실행): 공지 → 이벤트 로비 → 플레이 → 결과·보상."></a><figcaption><b>왁뿌볼 이벤트(본인 주도 작업, 1.1.334 출시) 실제 게임 화면(에디터 실행)</b>: 공지 → 이벤트 로비 → 플레이 → 결과·보상. · 이미지를 누르면 확대됩니다.</figcaption></figure>
 <div class="table-wrap" role="region" aria-label="상세 비교와 프로젝트 정보 7" tabindex="0"><table>
