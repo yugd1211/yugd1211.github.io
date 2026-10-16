@@ -1,0 +1,249 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CatJump | 유경동</title><meta name="description" content="호스트가 바뀌어도 경기를 복구하고, 반복되는 이벤트 구현을 공용 흐름으로 바꿉니다."><meta property="og:type" content="website"><meta property="og:title" content="CatJump | 유경동"><meta property="og:description" content="호스트가 바뀌어도 경기를 복구하고, 반복되는 이벤트 구현을 공용 흐름으로 바꿉니다."><meta property="og:image" content="https://yugd1211.github.io/assets/og.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/font.css"><link rel="stylesheet" href="/assets/tokens.css"><link rel="stylesheet" href="/assets/site.css"></head><body><a class="skip" href="#main">본문으로 이동</a><header class="site-header wrap"><a class="identity" href="/">유경동<span>Unity · C#</span></a><nav aria-label="주 메뉴"><a href="/#projects">프로젝트</a><a href="/#resume">이력서</a><a href="/#contact">연락</a></nav></header><main id="main"><div class="reading detail"><a class="back" href="/#projects">← 프로젝트 목록</a><header class="project-heading"><p class="eyebrow">회사 · 2025.07–재직 중</p><h1>CatJump</h1><p class="lead">호스트가 바뀌어도 경기를 복구하고, 반복되는 이벤트 구현을 공용 흐름으로 바꿉니다.</p><nav class="case-nav" aria-label="CatJump 사례"><a href="#case-3">PvP 복구</a><a href="#case-4">공용 대사</a><a href="#case-5">보상 분리</a><a href="#case-6">회전 판정</a><a href="#case-7">라이브 대응</a></nav></header><section class="case" id="case-2"><p><strong>CatJump</strong> · 라이브 모바일 점프 게임 · 회사 업무</p>
+<h1 id="catjump">CatJump</h2>
+<p>약 2~3주 간격으로 업데이트되는 CatJump에서 PvP·이벤트·보상을 개발하고 출시 후 오류를 수정합니다.</p>
+<figure class="fig "><a href="/assets/catjump_play_feature.webp" aria-label="CatJump 공개 홍보 그래픽 · 출처: Google Play. 서비스 소개용이며 본인 구현의 증거는 아닙니다. 크게 보기"><img src="/assets/catjump_play_feature.webp" width="1024" height="500" loading="lazy" decoding="async" alt="CatJump 공개 홍보 그래픽 · 출처: Google Play. 서비스 소개용이며 본인 구현의 증거는 아닙니다."></a><figcaption>CatJump 공개 홍보 그래픽 · 출처: Google Play. 서비스 소개용이며 본인 구현의 증거는 아닙니다. · 이미지를 누르면 확대됩니다.</figcaption></figure>
+<div class="table-wrap" role="region" aria-label="상세 비교와 프로젝트 정보 1" tabindex="0"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>기간</td>
+<td>2025.07~재직 중</td>
+</tr>
+<tr>
+<td>회사</td>
+<td>씨플레이 개발팀 · 사원</td>
+</tr>
+<tr>
+<td>서비스</td>
+<td>약 70만 MAU 라이브 모바일 게임 · Google Play 500만+ 다운로드</td>
+</tr>
+<tr>
+<td>내 역할</td>
+<td>Unity·C# 클라이언트 개발 · 라이브 운영 대응</td>
+</tr>
+<tr>
+<td>기술</td>
+<td>Unity · C# · UGUI · Photon PUN2 · Firebase</td>
+</tr>
+<tr>
+<td>링크</td>
+<td><a href="https://play.google.com/store/apps/details?id=com.seeplay.catjump&hl=ko">Google Play</a></td>
+</tr>
+</tbody></table></div>
+<h2 id="맡은-범위">맡은 범위</h2>
+<div class="table-wrap" role="region" aria-label="상세 비교와 프로젝트 정보 2" tabindex="0"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>본인 설계·구현</td>
+<td>10인 실시간 PvP 전 범위, 공용 대사 시스템</td>
+</tr>
+<tr>
+<td>담당 구현</td>
+<td>보상 상자의 지급·표시 분리, 스킨 상태 연결, 회전 판정 미니게임</td>
+</tr>
+<tr>
+<td>운영 대응</td>
+<td>이벤트 10종 이상 개발·수정, 레벨 에디터 업데이트</td>
+</tr>
+<tr>
+<td>수정 대응</td>
+<td>UI 변경, 튜토리얼·연출 스크립트, 출시 후 오류</td>
+</tr>
+</tbody></table></div>
+<figure class="fig "><a href="/assets/catjump-store-2up.webp" aria-label="공개 스토어 화면 2컷(기본 플레이·온라인 io 플레이) · 출처: Google Play. 서비스 소개용입니다. 크게 보기"><img src="/assets/catjump-store-2up.webp" width="1100" height="960" loading="lazy" decoding="async" alt="공개 스토어 화면 2컷(기본 플레이·온라인 io 플레이) · 출처: Google Play. 서비스 소개용입니다."></a><figcaption>공개 스토어 화면 2컷(기본 플레이·온라인 io 플레이) · 출처: Google Play. 서비스 소개용입니다. · 이미지를 누르면 확대됩니다.</figcaption></figure>
+<figure class="fig diagram"><a href="/assets/cj-event-lifecycle.webp" aria-label="공통 이벤트 생명주기(일반화): 신규 미니게임을 진입부터 기간 종료까지 같은 흐름에 연결. 크게 보기"><img src="/assets/cj-event-lifecycle.webp" width="1144" height="996" loading="lazy" decoding="async" alt="공통 이벤트 생명주기(일반화): 신규 미니게임을 진입부터 기간 종료까지 같은 흐름에 연결."></a><figcaption>공통 이벤트 생명주기(일반화): 신규 미니게임을 진입부터 기간 종료까지 같은 흐름에 연결. · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
+<figure class="fig diagram"><a href="/assets/cj-save-restore.webp" aria-label="이벤트 저장·복귀 일반 구조(일반화): 진행·보상 저장 뒤 재진입하고 기간 종료는 따로 분기. 크게 보기"><img src="/assets/cj-save-restore.webp" width="768" height="1200" loading="lazy" decoding="async" alt="이벤트 저장·복귀 일반 구조(일반화): 진행·보상 저장 뒤 재진입하고 기간 종료는 따로 분기."></a><figcaption>이벤트 저장·복귀 일반 구조(일반화): 진행·보상 저장 뒤 재진입하고 기간 종료는 따로 분기. · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
+<blockquote>
+<p><strong>비공개 코드 정책.</strong> CatJump의 소스 코드·내부 문서·데이터는 싣지 않았고 제공하지 않습니다. 이 문서의 CatJump 구조도는 담당 기능의 흐름을 일반 명사로 다시 그린 설명 자료입니다. 사례의 결과에는 확인된 변경을 적고, 확인 가능한 시험·측정 기록이 없는 부분은 &quot;기록 범위&quot;로 따로 표시했습니다.</p>
+</blockquote>
+</section><section class="case" id="case-3"><p><strong>사례 1</strong> · CatJump · 본인 전 범위 구현</p>
+<h2 id="pun2-10인-pvp-호스트가-바뀌어도-룸-속성-기준으로-경기-복구">PUN2 10인 PvP: 호스트가 바뀌어도 룸 속성 기준으로 경기 복구</h2>
+<p>전용 서버 없는 PUN2 구조에서 마스터 클라이언트가 바뀌어도 경기를 이어 가야 했습니다.</p>
+<div class="step "><p><strong class="step-k">문제</strong> 10인 레이스는 클라이언트마다 이벤트를 받는 시점이 다릅니다. 진행 권한을 가진 마스터 클라이언트가 나가면 준비·카운트다운·결과 처리가 멈추거나 어긋날 수 있습니다.</p></div>
+<div class="step "><p><strong class="step-k">원인</strong> 전용 서버 없이 마스터 클라이언트가 진행을 맡는 PUN2 구조이고, 모바일 네트워크 환경입니다.</p></div>
+<div class="step "><p><strong class="step-k">판단</strong> 진행 단계를 룸 속성에 기록해 호스트가 바뀐 뒤 읽을 복구 기준을 남겼습니다. 아래 비교는 지금 정리한 것입니다.</p></div>
+<div class="table-wrap" role="region" aria-label="상세 비교와 프로젝트 정보 3" tabindex="0"><table>
+<thead>
+<tr>
+<th>진행 단계 보관 위치</th>
+<th>얻는 것</th>
+<th>비용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>클라이언트 메모리에만</td>
+<td>구현이 단순함</td>
+<td>새 마스터가 이전 단계의 기준을 읽을 수 없음</td>
+</tr>
+<tr>
+<td><strong>룸 속성에 기록 (선택)</strong></td>
+<td>새 마스터가 같은 값을 읽어 재개</td>
+<td>갱신 지연·동시 갱신 충돌을 다뤄야 함</td>
+</tr>
+</tbody></table></div>
+<div class="step "><p><strong class="step-k">구현</strong> 매칭 탐색 → 인원 확정 → 준비·카운트다운 → 플레이 → 결과로 단계를 나눴습니다. 새 마스터는 룸 속성에서 진행 단계를 읽어 재개합니다. 카운트다운은 이와 별개로 이벤트에 순번을 붙여 순번이 지난 이벤트를 반영하지 않고, 이탈한 자리는 AI로 대체합니다.</p></div>
+<div class="step result"><p><strong class="step-k">결과</strong> 출시 후 카운트다운 불일치·룸 진입 크래시·로비 복귀 오류를 수정했습니다. (기록 범위: 지연·이탈 조합별 시험 기록과 네트워크 품질 측정치는 없음)</p></div>
+<figure class="fig diagram"><a href="/assets/cj-pvp-recovery.webp" aria-label="호스트 전환 복구(일반화): 새 호스트가 룸 상태를 읽어 진행과 참가자 화면을 맞춤(AI 대체는 제외). 크게 보기"><img src="/assets/cj-pvp-recovery.webp" width="1440" height="1110" loading="lazy" decoding="async" alt="호스트 전환 복구(일반화): 새 호스트가 룸 상태를 읽어 진행과 참가자 화면을 맞춤(AI 대체는 제외)."></a><figcaption>호스트 전환 복구(일반화): 새 호스트가 룸 상태를 읽어 진행과 참가자 화면을 맞춤(AI 대체는 제외). · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
+</section><section class="case" id="case-4"><p><strong>사례 2</strong> · CatJump · 본인 설계·구현</p>
+<h2 id="이벤트마다-하드코딩하던-대사·연출을-공용-시스템으로-설계·구현">이벤트마다 하드코딩하던 대사·연출을 공용 시스템으로 설계·구현</h2>
+<p>약 2~3주 주기로 이벤트가 바뀌는 운영에서, 이벤트마다 따로 만들던 대사·연출을 한 시스템으로 모았습니다.</p>
+<div class="step "><p><strong class="step-k">문제</strong> 공용 시스템 이전에는 이벤트마다 대사와 연출을 코드에 직접 써서 만들었습니다. 이벤트가 바뀔 때마다 대사 UI 연결과 종료·예외 처리를 다시 작성해야 했습니다.</p></div>
+<div class="step "><p><strong class="step-k">원인</strong> 새 이벤트가 붙을 때마다 같은 구현이 반복되는 구조였습니다. 공용화하려면 로컬라이징, 타이핑 중 리치 텍스트 태그, 뒤로가기 닫기를 함께 다뤄야 했고, 이미 하드코딩된 기존 이벤트와도 공존해야 했습니다.</p></div>
+<div class="step "><p><strong class="step-k">판단</strong> 대사·연출을 이벤트 코드 밖으로 빼고 공용 시스템이 처리하게 했습니다. 표의 장단점 행은 지금 정리한 비교입니다.</p></div>
+<div class="table-wrap" role="region" aria-label="상세 비교와 프로젝트 정보 4" tabindex="0"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>이벤트별 하드코딩 (기존)</th>
+<th>공용 대사 시스템 (변경)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>대사·연출 정의</td>
+<td>이벤트 코드 안</td>
+<td>이벤트 코드 밖 데이터</td>
+</tr>
+<tr>
+<td>종료 후 다음 동작</td>
+<td>이벤트마다 직접 연결</td>
+<td>완료 콜백으로 연결</td>
+</tr>
+<tr>
+<td>장단점(사후 정리)</td>
+<td>이벤트 하나만 보면 빠르고 연출이 자유로움</td>
+<td>첫 구현 비용, 공용 규칙 밖 연출의 처리</td>
+</tr>
+</tbody></table></div>
+<div class="step "><p><strong class="step-k">구현</strong> 공용 시스템이 리치 텍스트 태그를 깨지 않는 타이핑, 슬롯 포커스, 배경만 있는 줄, 뒤로가기 닫기를 처리하고, 이벤트 쪽은 완료 콜백으로 후속 동작을 연결합니다.</p></div>
+<div class="step result"><p><strong class="step-k">결과</strong> 새 이벤트의 대사를 공용 시스템에 올리는 구조로 바꿨습니다. (기록 범위: 제작 시간·QA 비용의 전후 비교 기록은 없음)</p></div>
+<figure class="fig diagram"><a href="/assets/cj-dialogue-before-after.webp" aria-label="공용 대사 시스템 전후(설명용 재구성): 이벤트별 직접 구현 → 데이터·공용 시스템·연출 훅(세부 경로는 자기서술). 크게 보기"><img src="/assets/cj-dialogue-before-after.webp" width="1440" height="617" loading="lazy" decoding="async" alt="공용 대사 시스템 전후(설명용 재구성): 이벤트별 직접 구현 → 데이터·공용 시스템·연출 훅(세부 경로는 자기서술)."></a><figcaption>공용 대사 시스템 전후(설명용 재구성): 이벤트별 직접 구현 → 데이터·공용 시스템·연출 훅(세부 경로는 자기서술). · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
+</section><section class="case" id="case-5"><p><strong>사례 3</strong> · CatJump · 담당 구현</p>
+<h2 id="보상-지급·저장과-표시를-분리하고-추첨-전에-획득-불가-후보를-제외">보상 지급·저장과 표시를 분리하고, 추첨 전에 획득 불가 후보를 제외</h2>
+<p>광고 추가 개봉과 가중치 추첨이 섞인 보상 상자에서 연출 변경과 지급·저장 경로를 떼어 놓았습니다.</p>
+<figure class="fig diagram"><a href="/assets/cj-reward-box.webp" aria-label="보상 상자(일반화): 후보 제외·중복 전환·지급 확정 뒤 결과만 표시 계층에 전달. 크게 보기"><img src="/assets/cj-reward-box.webp" width="492" height="1664" loading="lazy" decoding="async" alt="보상 상자(일반화): 후보 제외·중복 전환·지급 확정 뒤 결과만 표시 계층에 전달."></a><figcaption>보상 상자(일반화): 후보 제외·중복 전환·지급 확정 뒤 결과만 표시 계층에 전달. · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
+<div class="step "><p><strong class="step-k">문제</strong> 일일 미션 포인트로 단계별 상자를 열고, 광고로 추가 개봉하며, 스킨·재화를 가중치로 추첨하는 보상입니다. 지급과 표시가 한 흐름에 섞이면 팝업·연출만 바꿔도 지급·저장 경로가 같이 바뀝니다. 또 추첨 후보에 따라 빈 보상·중복 보상이 나올 수 있습니다.</p></div>
+<div class="step "><p><strong class="step-k">원인</strong> 확률표에 이미 다 가진 등급이나 상자 대상이 아닌 스킨이 남으면 빈 보상·중복 보상이 됩니다. 확률·보상 데이터는 라이브 중에도 표 데이터로 바뀝니다.</p></div>
+<div class="step "><p><strong class="step-k">판단</strong> 진행, 보상 결정, 표시를 다른 책임으로 나누고 표시 계층은 확정된 결과만 받게 했습니다. 후보 처리 방식의 비교는 지금 정리한 것입니다.</p></div>
+<div class="table-wrap" role="region" aria-label="상세 비교와 프로젝트 정보 5" tabindex="0"><table>
+<thead>
+<tr>
+<th>방식</th>
+<th>장점</th>
+<th>한계</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>추첨 뒤 무효면 재추첨</td>
+<td>표를 그대로 사용</td>
+<td>유효 후보가 0개면 반복이 끝나지 않을 수 있음</td>
+</tr>
+<tr>
+<td><strong>추첨 전 후보 제외 (선택)</strong></td>
+<td>재추첨 반복을 피하고 유효 후보를 명시</td>
+<td>표의 확률이 유효 후보 안의 확률로 바뀜</td>
+</tr>
+</tbody></table></div>
+<div class="step "><p><strong class="step-k">구현</strong> 미션 결과 → 포인트 반영 → 단계 판정 → 유효 후보 구성 → 등급·스킨 추첨 → 중복은 재화로 전환 → 지급·저장 확정 → 팝업·개봉 연출에 결과 전달.</p></div>
+<div class="step result"><p><strong class="step-k">결과</strong> 보상 결정·지급·저장을 처리한 결과만 표시 계층으로 넘기고, 후보 제외와 중복 재화 전환을 넣었습니다. (기록 범위: 유효 후보가 모두 빠지는 경우의 반환 정책, 저장 실패 재시도, 표시 확률 검증 기록은 미확인)</p></div>
+<h3 id="함께-맡은-일-기존-색상-선택을-보존하며-스킨-상태를-여러-화면에-연결">함께 맡은 일: 기존 색상 선택을 보존하며 스킨 상태를 여러 화면에 연결</h3>
+<p>서비스 중인 색상 변경 기능 위에 스킨을 추가했습니다. 스킨 정의는 런타임에 한 번 인덱싱하고, 각 화면은 이 기준을 참조해 상태를 다시 계산합니다.</p>
+<div class="table-wrap" role="region" aria-label="상세 비교와 프로젝트 정보 6" tabindex="0"><table>
+<thead>
+<tr>
+<th>수정 기록</th>
+<th>처리</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>기본 스킨을 고르면 색상 선택이 풀림</td>
+<td>기존 색상 상태를 보존하도록 수정</td>
+</tr>
+<tr>
+<td>일부 결과 화면에 스킨 초상화가 빠짐</td>
+<td>PvP·레이스 결과 화면에 표시 경로 연결</td>
+</tr>
+<tr>
+<td>탭을 옮겨도 설정 창이 닫히지 않음</td>
+<td>탭 이동 시 닫힘 처리</td>
+</tr>
+</tbody></table></div>
+</section><section class="case" id="case-6"><p><strong>사례 4</strong> · CatJump · 담당 구현</p>
+<h2 id="회전·스케일이-누적되는-ui에서-월드-위치와-방향-기준으로-obb-충돌-판정">회전·스케일이 누적되는 UI에서 월드 위치와 방향 기준으로 OBB 충돌 판정</h2>
+<p>UGUI 계층 안에서 회전하는 목표물에 핀을 던지는 기간 한정 미니게임의 판정 문제입니다.</p>
+<figure class="fig diagram"><a href="/assets/cj-obb-hit.webp" aria-label="OBB 판정 절차(개념도): 목표물과 핀을 월드 위치·방향 기준의 같은 좌표계에서 판정. 크게 보기"><img src="/assets/cj-obb-hit.webp" width="866" height="840" loading="lazy" decoding="async" alt="OBB 판정 절차(개념도): 목표물과 핀을 월드 위치·방향 기준의 같은 좌표계에서 판정."></a><figcaption>OBB 판정 절차(개념도): 목표물과 핀을 월드 위치·방향 기준의 같은 좌표계에서 판정. · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
+<div class="step "><p><strong class="step-k">문제</strong> 회전하는 목표물에 핀을 던져 꽂는 기간 한정 미니게임입니다. 맞은 것처럼 보이는데 실패로 처리되는 경우가 생겼습니다.</p></div>
+<div class="step "><p><strong class="step-k">원인</strong> 오브젝트가 UGUI 계층에 있어 부모의 회전·스케일이 누적됩니다. UI 사각형 기준 판정은 회전한 목표물의 보이는 모양과 판정 영역이 달랐습니다.</p></div>
+<div class="step "><p><strong class="step-k">판단</strong> 판정에 쓰는 기준 좌표와 방향을 하나로 정했습니다. 판정 방식 비교는 지금 정리한 것입니다.</p></div>
+<div class="table-wrap" role="region" aria-label="상세 비교와 프로젝트 정보 7" tabindex="0"><table>
+<thead>
+<tr>
+<th>판정 방식</th>
+<th>한계</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>UI 사각형(축 정렬)</td>
+<td>회전하면 보이는 모양과 판정 영역이 어긋남</td>
+</tr>
+<tr>
+<td>물리 콜라이더</td>
+<td>캔버스 스케일·카메라 설정과 UI 연출을 함께 맞춰야 함</td>
+</tr>
+<tr>
+<td>원 근사</td>
+<td>길쭉한 핀 모양에 맞지 않음</td>
+</tr>
+<tr>
+<td><strong>월드 위치·방향 OBB (선택)</strong></td>
+<td>좌표 변환 계산을 직접 관리해야 함</td>
+</tr>
+</tbody></table></div>
+<div class="step "><p><strong class="step-k">구현</strong> 목표물과 핀의 월드 위치·방향을 공통 좌표계에서 비교하도록 판정 기준을 바꿨습니다. 주변 구조는 운영 데이터 파싱·검증, 런타임 모델, 라운드 상태 전환, 판정기로 나눴고, 목표물·등급·회전은 세션 시드와 단계·라운드 값으로 고릅니다.</p></div>
+<div class="step result"><p><strong class="step-k">결과</strong> 월드 OBB 판정으로 기준을 바꾸고, 이어하기 광고·스킵·네트워크 예외를 수정했습니다. (기록 범위: 판정 오차의 전후 측정 기록은 없음)</p></div>
+<h3 id="함께-맡은-일-상승형-미니게임의-진행-규칙과-unity-표현-분리">함께 맡은 일: 상승형 미니게임의 진행 규칙과 Unity 표현 분리</h3>
+<p>높이 구간마다 배경·보상·대화가 바뀌고, 광고 이어하기·부스터·일시정지가 끼어드는 미니게임입니다.
+시작·완료·지급·결과 적용은 Unity 의존이 적은 흐름 객체에 두고, 입력·시간·스크롤·연출은 연결 계층으로 나눴습니다.
+배경은 진행도 구간과 유저 시드로 결정적으로 고르게 했습니다. 같은 시드라도 데이터 버전이나 난수 소비 순서가 바뀌면 결과가 달라질 수 있습니다.</p>
+<figure class="fig diagram"><a href="/assets/cj-minigame-split.webp" aria-label="규칙·표현 경계(일반화): 진행도·시드 규칙과 Unity 입력·배경·연출을 분리. 크게 보기"><img src="/assets/cj-minigame-split.webp" width="1152" height="672" loading="lazy" decoding="async" alt="규칙·표현 경계(일반화): 진행도·시드 규칙과 Unity 입력·배경·연출을 분리."></a><figcaption>규칙·표현 경계(일반화): 진행도·시드 규칙과 Unity 입력·배경·연출을 분리. · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
+</section><section class="case" id="case-7"><p><strong>사례 5</strong> · CatJump · 라이브 대응</p>
+<h2 id="광고-시청-후-복귀-경로에서-빠지던-보상-저장-수정">광고 시청 후 복귀 경로에서 빠지던 보상 저장 수정</h2>
+<div class="step "><p><strong class="step-k">문제</strong> 메인 화면에서 광고를 보고 티켓을 받는 흐름에서 보상이 저장되지 않는 경로가 있었습니다. 미니게임 이어하기 광고에서도 스킵·네트워크 실패·일시정지 후 종료 같은 예외가 반복됐습니다.</p></div>
+<div class="step "><p><strong class="step-k">제약</strong> 광고 SDK 콜백 시점이 앱의 백그라운드 전환과 엮이고, 라이브 빌드의 수정은 다음 업데이트에 반영됩니다.</p></div>
+<div class="step "><p><strong class="step-k">판단</strong> 광고 보상 경로의 지급 → 저장 → UI 갱신 순서를 점검해 누락된 구간을 찾았습니다.</p></div>
+<div class="step "><p><strong class="step-k">구현</strong> 광고 결과 콜백 → 보상 지급 → 저장 → UI·알림 갱신 순서로 경로를 맞추고, 이어하기 광고의 스킵·실패 예외를 처리했습니다.</p></div>
+<div class="step result"><p><strong class="step-k">결과</strong> 광고 보상 경로에서 누락된 저장 처리를 수정했습니다. (기록 범위: 수정 후 재발 추적 기록은 없음)</p></div>
+<h3 id="라이브-운영에서-맡은-그-밖의-일">라이브 운영에서 맡은 그 밖의 일</h3>
+<div class="table-wrap" role="region" aria-label="상세 비교와 프로젝트 정보 8" tabindex="0"><table>
+<thead>
+<tr>
+<th>범위</th>
+<th>한 일</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>이벤트</td>
+<td>이벤트 10종 이상 개발·수정, 신규 미니게임을 공통 이벤트 생명주기에 연결</td>
+</tr>
+<tr>
+<td>도구·데이터</td>
+<td>레벨 에디터 업데이트, 스킨 리소스 폴더 단위 등록 에디터 도구, 현지화 리소스 반영</td>
+</tr>
+<tr>
+<td>화면·연출</td>
+<td>UI 변경 대응, 튜토리얼·연출 스크립트 수정, 캐릭터 획득 시 프로필 배지 지급 연동</td>
+</tr>
+<tr>
+<td>정리·안정화</td>
+<td>종료 이벤트 자산 정리, 테스트 기능의 에디터 전용 제한, Crashlytics 리포트 기반 크래시 조사</td>
+</tr>
+</tbody></table></div>
+</section><a class="back" href="/#projects">← 프로젝트 목록</a></div></main><footer class="wrap site-footer"><span>유경동 · Unity·C# 게임 클라이언트 개발자</span><a href="mailto:yugd1211@gmail.com">yugd1211@gmail.com</a><span>2026.10 업데이트</span></footer></body></html>

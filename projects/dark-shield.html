@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DARK SHIELD | 유경동</title><meta name="description" content="분기마다 미리 만들던 방을 다음 후보만 생성하고 이동 뒤 정리하도록 변경했습니다."><meta property="og:type" content="website"><meta property="og:title" content="DARK SHIELD | 유경동"><meta property="og:description" content="분기마다 미리 만들던 방을 다음 후보만 생성하고 이동 뒤 정리하도록 변경했습니다."><meta property="og:image" content="https://yugd1211.github.io/assets/og.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/font.css"><link rel="stylesheet" href="/assets/tokens.css"><link rel="stylesheet" href="/assets/site.css"></head><body><a class="skip" href="#main">본문으로 이동</a><header class="site-header wrap"><a class="identity" href="/">유경동<span>Unity · C#</span></a><nav aria-label="주 메뉴"><a href="/#projects">프로젝트</a><a href="/#resume">이력서</a><a href="/#contact">연락</a></nav></header><main id="main"><div class="reading detail"><a class="back" href="/#projects">← 프로젝트 목록</a><header class="project-heading"><p class="eyebrow">팀 · 팀장 · 2024.11–12</p><h1>DARK SHIELD</h1><p class="lead">분기마다 미리 만들던 방을 다음 후보만 생성하고 이동 뒤 정리하도록 변경했습니다.</p></header><section class="case" id="case-8"><p><strong>개인·팀 프로젝트 1</strong> · Unity 3D 액션 · 팀 프로젝트</p>
+<h1 id="dark-shield">DARK SHIELD</h2>
+<p>다음 후보 방만 생성하도록 바꾸고, 이동 뒤 이전 방과 선택하지 않은 분기의 오브젝트를 정리했습니다.</p>
+<div class="table-wrap" role="region" aria-label="상세 비교와 프로젝트 정보 9" tabindex="0"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>기간</td>
+<td>2024.11.26~2024.12.12</td>
+</tr>
+<tr>
+<td>팀</td>
+<td>개발 3인 · 팀장</td>
+</tr>
+<tr>
+<td>내 역할</td>
+<td>분기 스테이지 생성·정리, 상호작용 표시, 대화 종료 후 후속 동작</td>
+</tr>
+<tr>
+<td>기술</td>
+<td>Unity 2022.3 · C# · ScriptableObject · NavMeshAgent · Input System</td>
+</tr>
+<tr>
+<td>링크</td>
+<td><a href="https://github.com/yugd1211/DarkShield">GitHub</a> · <a href="https://youtu.be/SM46vrXvTMY">플레이 영상</a></td>
+</tr>
+</tbody></table></div>
+<h2 id="1-분기형-포털의-스테이지-생성-범위를-3단계로-변경">1 분기형 포털의 스테이지 생성 범위를 3단계로 변경</h2>
+<figure class="fig diagram"><a href="/assets/ds-stage-evolution.webp" aria-label="스테이지 구조 변경 3단계: 동시 실행이 아니라 커밋 순서대로의 설계 변경. 크게 보기"><img src="/assets/ds-stage-evolution.webp" width="626" height="1554" loading="lazy" decoding="async" alt="스테이지 구조 변경 3단계: 동시 실행이 아니라 커밋 순서대로의 설계 변경."></a><figcaption>스테이지 구조 변경 3단계: 동시 실행이 아니라 커밋 순서대로의 설계 변경. · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
+<div class="step "><p><strong class="step-k">문제</strong> 포털마다 다음 방이 여러 갈래로 갈라집니다. 분기가 늘면 깊이에 따라 미리 만들 스테이지 수가 기하급수적으로 늘 수 있었습니다.</p></div>
+<div class="step "><p><strong class="step-k">원인</strong> 처음 구조는 모든 분기의 방을 미리 만들어 연결했습니다. 씬 전환 없이 한 씬 안에서 플레이어·카메라를 다음 구역으로 옮기는 방식이었습니다.</p></div>
+<div class="step "><p><strong class="step-k">판단</strong> 공개 커밋 순서로 남은 실제 변경 기록입니다.</p></div>
+<div class="table-wrap" role="region" aria-label="상세 비교와 프로젝트 정보 10" tabindex="0"><table>
+<thead>
+<tr>
+<th>단계</th>
+<th>방식</th>
+<th>드러난 한계</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>①</td>
+<td>전체 사전 생성</td>
+<td>분기가 깊어질수록 생성량 증가</td>
+</tr>
+<tr>
+<td>②</td>
+<td>현재 방의 다음 후보만 생성</td>
+<td>지나온 방이 계속 쌓임</td>
+</tr>
+<tr>
+<td><strong>③ (최종)</strong></td>
+<td>이동 뒤 이전 방·미선택 형제 방 삭제</td>
+<td>GameObject 정리이며 메모리 상한 보장은 아님</td>
+</tr>
+</tbody></table></div>
+<div class="step "><p><strong class="step-k">구현</strong> 노드에 이전·다음 연결을 두고, 선택한 방으로 현재 노드를 옮긴 뒤 이전 방과 형제 방을 지우고 새 다음 후보를 만듭니다. 관련 코드 <a href="https://github.com/yugd1211/DarkShield/blob/2a779961ebef1861cef914dd2e66e244576283a4/DarkShield/Assets/02.Scripts/Stage/StageManager.cs#L93-L127">StageManager.cs L93–127</a> · 변경 커밋 <a href="https://github.com/yugd1211/DarkShield/commit/db280963bd151550fedb0bc6c5a10d6364fab3c2">db28096</a> · <a href="https://github.com/yugd1211/DarkShield/commit/d475539ef3c7997efbe16179c0524be33c2e2ffd">d475539</a></p></div>
+<div class="step result"><p><strong class="step-k">결과</strong> 다음 후보 방만 만들고, 이동 뒤 이전 방과 미선택 분기의 GameObject를 정리했습니다. (기록 범위: 메모리 사용량 비교 기록은 없음)</p></div>
+<h2 id="2-포털·상점·강화·회복의-입력을-하나의-상호작용-규약으로">2 포털·상점·강화·회복의 입력을 하나의 상호작용 규약으로</h2>
+<p>주변 탐지 → 공통 인터페이스의 가능 여부 확인 → 실행 순서로 묶고, 월드 좌표를 UI 인디케이터로 바꿔 표시했습니다.
+상인과의 대화는 문장 큐가 비면 상점을 여는 후속 동작을 호출합니다. 첫 충돌체를 쓰므로 가장 가까운 대상을 고르지는 않습니다.
+관련 코드 <a href="https://github.com/yugd1211/DarkShield/blob/2a779961ebef1861cef914dd2e66e244576283a4/DarkShield/Assets/02.Scripts/Interactable/Interactor.cs#L27-L58">Interactor.cs L27–58</a> · 변경 커밋 <a href="https://github.com/yugd1211/DarkShield/commit/df2247ba860892339d2b79a46a7cec2a7de3057a">df2247b</a> · <a href="https://github.com/yugd1211/DarkShield/commit/5cea1a3e40a89a28ca6c6c2aa772be3f26412cf1">5cea1a3</a></p>
+<figure class="fig "><a href="/assets/darkshield-interact-3up.webp" aria-label="실제 플레이 화면 3컷: 공통 상호작용 규약이 적용된 E 키 상호작용 대상(NPC·포털·오브젝트). 크게 보기"><img src="/assets/darkshield-interact-3up.webp" width="777" height="232" loading="lazy" decoding="async" alt="실제 플레이 화면 3컷: 공통 상호작용 규약이 적용된 E 키 상호작용 대상(NPC·포털·오브젝트)."></a><figcaption>실제 플레이 화면 3컷: 공통 상호작용 규약이 적용된 E 키 상호작용 대상(NPC·포털·오브젝트). · 이미지를 누르면 확대됩니다.</figcaption></figure>
+<figure class="fig diagram"><a href="/assets/ds-interactable.webp" aria-label="공통 상호작용 규약: Interactor가 IInteractable로 가능 여부·실행을 호출(최근접 선택 없음). 크게 보기"><img src="/assets/ds-interactable.webp" width="1024" height="1206" loading="lazy" decoding="async" alt="공통 상호작용 규약: Interactor가 IInteractable로 가능 여부·실행을 호출(최근접 선택 없음)."></a><figcaption>공통 상호작용 규약: Interactor가 IInteractable로 가능 여부·실행을 호출(최근접 선택 없음). · 작은 화면에서는 좌우로 스크롤할 수 있습니다. 이미지를 누르면 확대됩니다.</figcaption></figure>
+</section><a class="back" href="/#projects">← 프로젝트 목록</a></div></main><footer class="wrap site-footer"><span>유경동 · Unity·C# 게임 클라이언트 개발자</span><a href="mailto:yugd1211@gmail.com">yugd1211@gmail.com</a><span>2026.10 업데이트</span></footer></body></html>

@@ -1,0 +1,49 @@
+/* V2 디자인 토큰 — 이력서·자소서·포트폴리오·웹 공통. 스펙: ../../analysis/40_design_spec.md */
+
+/* 인쇄 PDF: 정적 웨이트 사용 (가변 폰트는 Chromium PDF에서 Type3로 임베드됨 — 40_design_spec.md 참고) */
+
+
+
+
+
+
+
+:root {
+  /* 색: 포인트 1개(신호 레드) + 중립 */
+  --c-ink: #1E2430;        /* 본문·제목 (흰 배경 대비 15.6:1) */
+  --c-ink-2: #4A5260;      /* 보조 본문 (7.9:1) */
+  --c-ink-3: #5B6472;      /* 캡션·메타 최소값 (6.0:1) */
+  --c-line: #E4E7EC;       /* 구분선·테두리 (비텍스트) */
+  --c-surface: #F6F7F9;    /* 코드·표 머리 배경 (면적 최소) */
+  --c-paper: #FFFFFF;
+  --c-accent: #D1293D;     /* 포인트: 노드·번호·핵심 숫자 (흰 배경 5.1:1) */
+  --c-accent-tint: #FDF0F1;/* 콜아웃 배경 (accent 텍스트 4.6:1) */
+
+  /* 타입: Pretendard 단일 패밀리, 코드 식별자만 JetBrains Mono */
+  --f-sans: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --f-mono: "JetBrains Mono", Consolas, monospace;
+
+  /* 인쇄 타입 스케일 (pt) — 1.2 비율, 본문 기준 */
+  --t-caption: 7.5pt;
+  --t-small: 8.5pt;
+  --t-body: 9.5pt;
+  --t-h3: 10.5pt;
+  --t-h2: 12.5pt;
+  --t-h1: 17pt;
+  --t-display: 26pt;
+  --lh-body: 1.55;
+  --lh-tight: 1.25;
+
+  /* 간격: 8pt 그리드 (4는 미세 조정용 반 단계) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 16px;
+  --s-4: 24px;
+  --s-5: 32px;
+  --s-6: 48px;
+  --s-7: 64px;
+
+  --radius-s: 3px;   /* 태그 */
+  --radius-m: 6px;   /* 이미지 프레임·콜아웃 */
+  --rail-w: 2px;     /* 상태 전이 레일 */
+}
